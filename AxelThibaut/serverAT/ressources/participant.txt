@@ -1,0 +1,4 @@
+{"participant":{"identifiant":0,"nom":"a","mail":"a"}}
+{"participant":{"identifiant":1,"nom":"sdfdfs","mail":"sdfd"}}
+{"participant":{"identifiant":2,"nom":"sdfsdf","mail":"sfds"}}
+{"participant":{"identifiant":3,"nom":"sdfsdf","mail":"sfdfd"}}

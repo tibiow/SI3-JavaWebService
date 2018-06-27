@@ -1,0 +1,133 @@
+﻿# teamAT-AT
+
+Aiello Axel
+Gonnin Thibaut
+Jalabert Thomas
+Steyer Antoine
+
+
+Description du protocole Client-Server utilisant la sérialisation chaine.
+
+
+Utilisation du format JSON pour la structure de transfert.
+Les requêtes client ont un mot clé action : requête
+Les requêtes server ont un mot clé status : requête
+
+Structure Participant :
+	- Identifiant
+	- Nom étudiant
+	- Adresse E-mail
+
+Structure Idée : 
+	- Identifiant
+	- Titre
+	- Description
+	- Technologies (liste)
+	- Liste des étudiants interessés (initialisé avec le premier étudiant)
+
+Requêtes clients :
+	
+ADD [Titre Idée, Description, Technologies, Nom de l'étudiant, mail]
+	Ajoute une idée dans la base de donnée.
+
+LIST
+	Renvoie la liste de toutes les idées présentes dans la base de données.
+
+LIST [Identifiant Idée] 
+	Renvoie la liste des étudiants interessés par une idée donnée.
+
+PARTICIPE [Identifiant Idée, mail étudiant]
+	Inscrit un participant à une idée.
+	
+Réponses servers:
+
+OK : La requête s'est executée correctement.
+
+BAD REQUEST : Requête non connu ou mal écrite.
+
+
+Exemple de requête du client vers le serveur:
+
+ADD:
+
+{
+	"idee":
+		{
+		"titre":"server java",
+		"nom":"Gonnin Thibaut",
+		"mail":"thibaut.gonnin@gmail.com",
+		"description":"ceci est une description bla bla bla",
+		"technologies":["JAVA","JSON"]
+		},
+	"request":"ADD"
+}
+
+PARTICIPE:
+
+
+{
+	"idee":
+		{
+		"identifiant":5
+		0
+		},
+	"request":"PARTICIPE"
+}
+
+LIST:(renvoie la liste des étudiants interessés par une idée donnée)
+
+{
+	"idee":"server java",
+	"request":"LIST"
+}
+
+LIST:(retourne toutes les idées)
+
+{
+	"request":"LIST"
+}
+
+
+Exemple de réponse du serveur vers le client:
+
+ADD:
+
+{"status":"OK"}
+
+
+PARTICIPE:
+
+{"status":"OK"}
+
+
+LIST:(renvoie la liste des étudiants interessés par une idée donnée)
+
+{
+	"list":["Jalabert Thomas","Gonnin Thibaut","Steyer Antoine"]
+	,
+	"status":"OK"
+}
+
+LIST:(retourne toutes les idées)
+
+{
+	"list":[
+		{"Idee":
+			{"technologies":["JAVA","JSON"],
+			"interesses":[{"Participant":{"identifiant":0,"nom":"Thomas Jalabert","mail":"thom.jalabert@gmail"}},{"Participant":{"identifiant":1,"nom":"Antoine Steyer","mail":"antoine.steyer@gmail"}}],
+
+			"titre":"Server Java","identifiant":0,"description":"Petit projet client-serveur en java."}
+		},
+		{"Idee":
+			{"technologies":["JAVA","JSON"],
+			"interesses":[],
+			"titre":"Server Java2",
+			"identifiant":1,
+			"description":"Petit projet client-serveur en java."}
+		}
+	],
+	"status":"OK"
+}
+
+
+Pour notre serveur, nous avons décidé d'implémenter les requêtes ADD et LIST(retourne toutes les idées).

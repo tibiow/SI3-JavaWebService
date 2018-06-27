@@ -1,0 +1,3 @@
+{"technologies":[],"mail":"sdfd","titre":"sdkfdsf","description":"sddf","nom":"sdfdfs","interesses":[{"participant":{"identifiant":1,"nom":"sdfdfs","mail":"sdfd"}}]}
+{"technologies":[],"mail":"sfds","titre":"sdffds","description":"sfs","nom":"sdfsdf","interesses":[{"participant":{"identifiant":2,"nom":"sdfsdf","mail":"sfds"}}]}
+{"technologies":[],"mail":"sfdfd","titre":"sdlkjfd","description":"sdfds","nom":"sdfsdf","interesses":[{"participant":{"identifiant":3,"nom":"sdfsdf","mail":"sfdfd"}}]}
